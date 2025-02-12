@@ -13,7 +13,7 @@ function CreateTask({ addTask }) {
     taskBeforeDate: "",
     taskIsDateFlexible: false,
     taskTimeRequired: false,
-    taskTimeOfDay: "morning", // options: morning, midday, afternoon, evening
+    taskTimeOfDay: "", // options: morning, midday, afternoon, evening - starts with an empty state
     // Page Two
     taskLocationType: "in-person", // options: in-person, online
     taskLocation: "",
