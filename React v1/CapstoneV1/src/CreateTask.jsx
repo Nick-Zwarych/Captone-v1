@@ -27,12 +27,37 @@ function CreateTask({ addTask }) {
   const navigate = useNavigate();
 
   // Generic change handler for inputs
+  //const handleChange = (e) => {
+  //  const { name, value, type, checked } = e.target;
+  //  setTaskData((prev) => ({
+  //    ...prev,
+  //    [name]: type === "checkbox" ? checked : value,
+  //  }));
+  //};
+
+  // UPDATED change handler dealing with changes to time of day
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setTaskData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
+
+    // Special handling for "taskTimeRequired"
+    if (name === "taskTimeRequired") {
+      setTaskData((prev) => {
+        const newData = { ...prev, taskTimeRequired: checked };
+        // If time is not required, clear out the taskTimeOfDay.
+        // Otherwise, if it's being checked and taskTimeOfDay is empty, default to "morning".
+        if (!checked) {
+          newData.taskTimeOfDay = "";
+        } else if (!prev.taskTimeOfDay) {
+          newData.taskTimeOfDay = "morning";
+        }
+        return newData;
+      });
+    } else {
+      setTaskData((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      }));
+    }
   };
 
   // Move to the next step
