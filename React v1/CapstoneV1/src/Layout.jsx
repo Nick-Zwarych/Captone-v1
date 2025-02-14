@@ -29,6 +29,11 @@ function Layout() {
                 Create Task
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/tasks" activeStyle={{ fontWeight: "bold" }}>
+                Task List
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>
