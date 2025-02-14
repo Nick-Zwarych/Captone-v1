@@ -11,6 +11,7 @@ function CreateTask({ addTask }) {
     dateOption: "onDate",
     taskOnDate: "",
     taskBeforeDate: "",
+    taskAfterDate: "", // <--- Add this field
     taskIsDateFlexible: false,
     taskTimeRequired: false,
     taskTimeOfDay: "", // options: morning, midday, afternoon, evening - starts with an empty state
@@ -39,12 +40,10 @@ function CreateTask({ addTask }) {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
-    // Special handling for "taskTimeRequired"
     if (name === "taskTimeRequired") {
       setTaskData((prev) => {
         const newData = { ...prev, taskTimeRequired: checked };
-        // If time is not required, clear out the taskTimeOfDay.
-        // Otherwise, if it's being checked and taskTimeOfDay is empty, default to "morning".
+        // When unchecked, clear taskTimeOfDay. When checked and empty, default to "morning"
         if (!checked) {
           newData.taskTimeOfDay = "";
         } else if (!prev.taskTimeOfDay) {
@@ -88,7 +87,7 @@ function CreateTask({ addTask }) {
       >
         {step === 1 && (
           <div>
-            {/* Task Title */}
+            {/* Optionally include a Task Title */}
             <div>
               <label>
                 Task Title:
@@ -102,7 +101,33 @@ function CreateTask({ addTask }) {
               </label>
             </div>
 
-            {/* Date Flexible Checkbox */}
+            {/* Task Before Date */}
+            <div>
+              <label>
+                Task Before Date:
+                <input
+                  type="date"
+                  name="taskBeforeDate"
+                  value={taskData.taskBeforeDate}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            {/* Task After Date */}
+            <div>
+              <label>
+                Task After Date:
+                <input
+                  type="date"
+                  name="taskAfterDate"
+                  value={taskData.taskAfterDate}
+                  onChange={handleChange}
+                />
+              </label>
+            </div>
+
+            {/* Is Date Flexible? */}
             <div>
               <label>
                 Is Date Flexible?
@@ -110,81 +135,15 @@ function CreateTask({ addTask }) {
                   type="checkbox"
                   name="taskIsDateFlexible"
                   checked={taskData.taskIsDateFlexible}
-                  onChange={(e) => {
-                    // Update the taskData and optionally clear out date values
-                    handleChange(e);
-                    if (e.target.checked) {
-                      // If the date is flexible, clear the date fields.
-                      setTaskData((prev) => ({
-                        ...prev,
-                        taskOnDate: "",
-                        taskBeforeDate: "",
-                      }));
-                    }
-                  }}
+                  onChange={handleChange}
                 />
               </label>
             </div>
 
-            {/* If date is NOT flexible, let the user pick a date option */}
-            {!taskData.taskIsDateFlexible && (
-              <div>
-                <p>Select a Date Option:</p>
-                <label>
-                  <input
-                    type="radio"
-                    name="dateOption"
-                    value="onDate"
-                    checked={taskData.dateOption === "onDate"}
-                    onChange={handleChange}
-                  />
-                  Specific Date
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="dateOption"
-                    value="beforeDate"
-                    checked={taskData.dateOption === "beforeDate"}
-                    onChange={handleChange}
-                  />
-                  Before Date
-                </label>
-
-                {/* Render the appropriate date input based on the selected option */}
-                {taskData.dateOption === "onDate" && (
-                  <div>
-                    <label>
-                      Task On Date:
-                      <input
-                        type="date"
-                        name="taskOnDate"
-                        value={taskData.taskOnDate}
-                        onChange={handleChange}
-                        required
-                      />
-                    </label>
-                  </div>
-                )}
-                {taskData.dateOption === "beforeDate" && (
-                  <div>
-                    <label>
-                      Task Before Date:
-                      <input
-                        type="date"
-                        name="taskBeforeDate"
-                        value={taskData.taskBeforeDate}
-                        onChange={handleChange}
-                        required
-                      />
-                    </label>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* If date is flexible, show the Time Required option */}
-            {taskData.taskIsDateFlexible && (
+            {/* Only show Time Required if at least one option is selected */}
+            {(taskData.taskBeforeDate.trim() !== "" ||
+              taskData.taskAfterDate.trim() !== "" ||
+              taskData.taskIsDateFlexible) && (
               <div>
                 <label>
                   Time Required:
@@ -195,25 +154,25 @@ function CreateTask({ addTask }) {
                     onChange={handleChange}
                   />
                 </label>
+              </div>
+            )}
 
-                {/* If time is required, show the Time of Day selection */}
-                {taskData.taskTimeRequired && (
-                  <div>
-                    <label>
-                      Time of Day:
-                      <select
-                        name="taskTimeOfDay"
-                        value={taskData.taskTimeOfDay}
-                        onChange={handleChange}
-                      >
-                        <option value="morning">Morning</option>
-                        <option value="midday">Midday</option>
-                        <option value="afternoon">Afternoon</option>
-                        <option value="evening">Evening</option>
-                      </select>
-                    </label>
-                  </div>
-                )}
+            {/* Show Time of Day only if Time Required is checked */}
+            {taskData.taskTimeRequired && (
+              <div>
+                <label>
+                  Time of Day:
+                  <select
+                    name="taskTimeOfDay"
+                    value={taskData.taskTimeOfDay}
+                    onChange={handleChange}
+                  >
+                    <option value="morning">Morning</option>
+                    <option value="midday">Midday</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="evening">Evening</option>
+                  </select>
+                </label>
               </div>
             )}
           </div>
