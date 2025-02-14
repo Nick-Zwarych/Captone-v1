@@ -27,15 +27,6 @@ function CreateTask({ addTask }) {
 
   const navigate = useNavigate();
 
-  // Generic change handler for inputs
-  //const handleChange = (e) => {
-  //  const { name, value, type, checked } = e.target;
-  //  setTaskData((prev) => ({
-  //    ...prev,
-  //    [name]: type === "checkbox" ? checked : value,
-  //  }));
-  //};
-
   // UPDATED change handler dealing with changes to time of day
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -59,8 +50,33 @@ function CreateTask({ addTask }) {
     }
   };
 
-  // Move to the next step
-  const nextStep = () => setStep((prev) => prev + 1);
+  // Validation function for Step 1
+  const validateStep1 = () => {
+    // Ensure at least one of Task Before Date, Task After Date, or Is Date Flexible is selected
+    if (
+      taskData.taskBeforeDate.trim() === "" &&
+      taskData.taskAfterDate.trim() === "" &&
+      !taskData.taskIsDateFlexible
+    ) {
+      return false;
+    }
+    return true;
+  };
+
+  // Move to the next step with validation on step 1
+  const nextStep = () => {
+    // Removed e.preventDefault() here because it's already handled in the onSubmit wrapper.
+    if (step === 1) {
+      if (!validateStep1()) {
+        alert(
+          "Please select at least one option: either Task Before Date, Task After Date, or Is Date Flexible."
+        );
+        return; // Stop processing if validation fails
+      }
+    }
+    setStep((prev) => prev + 1);
+  };
+
   // Move to the previous step
   const prevStep = () => setStep((prev) => prev - 1);
 
