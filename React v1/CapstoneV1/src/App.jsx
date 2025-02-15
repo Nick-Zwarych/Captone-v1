@@ -29,7 +29,7 @@ function App() {
           {/* Pass the state and callback as props to these pages */}
           <Route path="create" element={<CreateTask addTask={addTask} />} />
           <Route path="tasks" element={<TaskList tasks={tasks} />} />
-          {/* You can redirect "/" or any other path to TaskList if desired */}
+          {/* Can redirect "/" or any other path to TaskList if desired */}
           {/* <Route path="/" element={<TaskList tasks={tasks} />} /> */}
         </Route>
       </Routes>
