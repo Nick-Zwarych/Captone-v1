@@ -7,71 +7,78 @@ function CreateTask({ addTask }) {
   const [taskData, setTaskData] = useState({
     // Page One
     taskTitle: "",
-    // Use this field to track which date option is selected: "onDate" or "beforeDate"
-    dateOption: "onDate",
-    taskOnDate: "",
     taskBeforeDate: "",
-    taskAfterDate: "", // <--- Add this field
+    taskAfterDate: "",
     taskIsDateFlexible: false,
     taskTimeRequired: false,
-    taskTimeOfDay: "", // options: morning, midday, afternoon, evening - starts with an empty state
+    taskTimeOfDay: "",
     // Page Two
-    taskLocationType: "in-person", // options: in-person, online
+    taskLocationType: "in-person",
     taskLocation: "",
     // Page Three
     taskDetails: "",
-    // taskImages: (to be added later)
     // Page Four
     taskBudget: "",
   });
 
   const navigate = useNavigate();
 
-  // UPDATED change handler dealing with changes to time of day
+  // Handle changes and enforce exclusivity
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
-    if (name === "taskTimeRequired") {
-      setTaskData((prev) => {
-        const newData = { ...prev, taskTimeRequired: checked };
-        // When unchecked, clear taskTimeOfDay. When checked and empty, default to "morning"
-        if (!checked) {
-          newData.taskTimeOfDay = "";
-        } else if (!prev.taskTimeOfDay) {
-          newData.taskTimeOfDay = "morning";
-        }
-        return newData;
-      });
-    } else {
-      setTaskData((prev) => ({
-        ...prev,
-        [name]: type === "checkbox" ? checked : value,
-      }));
-    }
+    setTaskData((prev) => {
+      let newData = { ...prev };
+
+      if (name === "taskBeforeDate") {
+        newData = {
+          ...newData,
+          taskBeforeDate: value, // Update before date
+          taskAfterDate: "", // Clear after date
+          taskIsDateFlexible: false, // Uncheck flexible
+        };
+      } else if (name === "taskAfterDate") {
+        newData = {
+          ...newData,
+          taskAfterDate: value, // Update after date
+          taskBeforeDate: "", // Clear before date
+          taskIsDateFlexible: false, // Uncheck flexible
+        };
+      } else if (name === "taskIsDateFlexible") {
+        newData = {
+          ...newData,
+          taskIsDateFlexible: checked, // Update flexible
+          taskBeforeDate: "", // Clear before date
+          taskAfterDate: "", // Clear after date
+        };
+      } else {
+        newData[name] = type === "checkbox" ? checked : value;
+      }
+
+      return newData;
+    });
   };
 
   // Validation function for Step 1
   const validateStep1 = () => {
-    // Ensure at least one of Task Before Date, Task After Date, or Is Date Flexible is selected
-    if (
-      taskData.taskBeforeDate.trim() === "" &&
-      taskData.taskAfterDate.trim() === "" &&
-      !taskData.taskIsDateFlexible
-    ) {
-      return false;
-    }
-    return true;
+    // Ensure that exactly one of Task Before Date, Task After Date, or Is Date Flexible is selected
+    const selectedOptions = [
+      taskData.taskBeforeDate.trim() !== "",
+      taskData.taskAfterDate.trim() !== "",
+      taskData.taskIsDateFlexible,
+    ].filter(Boolean).length;
+
+    return selectedOptions === 1; // Only allow exactly one selection
   };
 
   // Move to the next step with validation on step 1
   const nextStep = () => {
-    // Removed e.preventDefault() here because it's already handled in the onSubmit wrapper.
     if (step === 1) {
       if (!validateStep1()) {
         alert(
-          "Please select at least one option: either Task Before Date, Task After Date, or Is Date Flexible."
+          "Please select only ONE option: Task Before Date, Task After Date, or Is Date Flexible."
         );
-        return; // Stop processing if validation fails
+        return;
       }
     }
     setStep((prev) => prev + 1);
@@ -103,7 +110,7 @@ function CreateTask({ addTask }) {
       >
         {step === 1 && (
           <div>
-            {/* Optionally include a Task Title */}
+            {/* Task Title */}
             <div>
               <label>
                 Task Title:
@@ -126,6 +133,9 @@ function CreateTask({ addTask }) {
                   name="taskBeforeDate"
                   value={taskData.taskBeforeDate}
                   onChange={handleChange}
+                  disabled={
+                    taskData.taskAfterDate || taskData.taskIsDateFlexible
+                  }
                 />
               </label>
             </div>
@@ -139,6 +149,9 @@ function CreateTask({ addTask }) {
                   name="taskAfterDate"
                   value={taskData.taskAfterDate}
                   onChange={handleChange}
+                  disabled={
+                    taskData.taskBeforeDate || taskData.taskIsDateFlexible
+                  }
                 />
               </label>
             </div>
@@ -152,13 +165,14 @@ function CreateTask({ addTask }) {
                   name="taskIsDateFlexible"
                   checked={taskData.taskIsDateFlexible}
                   onChange={handleChange}
+                  disabled={taskData.taskBeforeDate || taskData.taskAfterDate}
                 />
               </label>
             </div>
 
             {/* Only show Time Required if at least one option is selected */}
-            {(taskData.taskBeforeDate.trim() !== "" ||
-              taskData.taskAfterDate.trim() !== "" ||
+            {(taskData.taskBeforeDate ||
+              taskData.taskAfterDate ||
               taskData.taskIsDateFlexible) && (
               <div>
                 <label>
