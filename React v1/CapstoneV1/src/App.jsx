@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Auth from "./pages/Auth";
+import Auth from "./pages/Auth"; // Login/Register Page
 import Layout from "./Layout";
 import Home from "./Home";
 import About from "./About";
@@ -22,9 +22,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* LOGIN PAGE (Separate from Layout) */}
+        <Route path="/login" element={<Auth />} />
+
         {/* Layout wraps all the routes */}
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Auth />} />
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
