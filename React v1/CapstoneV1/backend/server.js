@@ -3,23 +3,34 @@ const { MongoClient } = require("mongodb");
 const dotenv = require("dotenv");
 const cors = require("cors");
 
+// Load environment variables
 dotenv.config();
+
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Connect to MongoDB
 const client = new MongoClient(process.env.MONGO_URI);
 let db;
 
 async function connectDB() {
-  await client.connect();
-  db = client.db("yourDatabase"); // Replace with your actual database name
-  console.log("MongoDB Connected");
+  try {
+    await client.connect();
+    db = client.db("taskApp");
+    console.log("MongoDB Connected");
+  } catch (error) {
+    console.error("MongoDB Connection Failed:", error);
+  }
 }
+
 connectDB();
 
-// Sample route
+// Import authentication routes
+const authRoutes = require("./routes/auth");
+
+// Use authentication routes
+app.use("/api/auth", authRoutes);
+
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
