@@ -2,6 +2,7 @@
 import React from "react";
 import '../src/styles/Home.css';
 import heroImage from '../src/Images/heroImage1.png';
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -10,7 +11,9 @@ const Home = () => {
         <h1 className="hero-title">GET MORE DONE</h1>
         <p className="hero-subtext">Post any task. Pick the best person. Get it done.</p>
         <div className="hero-buttons">
-          <button className="btn primary">Post your task for free →</button>
+          <Link to="/create">
+            <button className="btn primary">Post your task for free →</button>
+          </Link>
           <button className="btn secondary">Earn money as a Tasker →</button>
         </div>
         <div className="hero-stats">
