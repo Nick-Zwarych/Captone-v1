@@ -225,7 +225,7 @@ function CreateTask({ addTask }) {
             </div>
             <div>
               <label>
-                Location - Postal Code - Nick Update:
+                Location - Postal Code - Jake Update:
                 <input
                   type="text"
                   name="taskLocation"
