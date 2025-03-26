@@ -21,10 +21,9 @@
 .logo {
   font-weight: bold;
   font-size: 1.25rem;
-  color: #1a1a40;
+  color: #051258;
 }
 
-/* Center nav on desktop */
 .nav-center {
   position: absolute;
   left: 50%;
@@ -41,8 +40,9 @@
 
 .nav-links li a {
   text-decoration: none;
-  font-weight: 500;
-  color: #1a1a40;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #051258;
 }
 
 .nav-links li a:hover {
