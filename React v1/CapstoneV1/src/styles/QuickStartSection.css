@@ -1,0 +1,82 @@
+.quickstart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+    gap: 2rem;
+    background-color: #e7f0ff;
+    border-radius: 1rem;
+    margin: 4rem auto 0;
+    width: 95%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+  }
+  
+  .quickstart-left {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .quickstart-left h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: #081952;
+  }
+  
+  .quickstart-left p {
+    font-size: 1.25rem;
+    margin: 1rem 0 2rem;
+    color: #1a1a40;
+  }
+  
+  .quickstart-steps {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .quickstart-steps li {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #1a1a40;
+  }
+  
+  .quickstart-steps span {
+    background-color: #b2ccff;
+    color: #1a1a40;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .quickstart-btn {
+    background-color: #0055ff;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 999px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .quickstart-btn:hover {
+    background-color: #003fcc;
+  }
+  
+  .quickstart-right {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .quickstart-image {
+    width: 100%;
+    border-radius: 1rem;
+  }
