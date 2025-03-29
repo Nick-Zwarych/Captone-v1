@@ -2,6 +2,7 @@
 import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import '../src/styles/Layout.css';
 
 export default function Layout() {
@@ -38,12 +39,15 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <footer
-        style={{ background: "#eee", padding: "1rem", marginTop: "1rem" }}
-      >
-        <p>
-          &copy; {new Date().getFullYear()} Task Company. All rights reserved.
-        </p>
+      <footer className="footer">
+        <div className="footer-links">
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/create">Create</Link>
+          <Link to="/tasks">Task List</Link>
+        </div>
+        <p>&copy; {new Date().getFullYear()} Task Company. All rights reserved.</p>
       </footer>
     </div>
   );

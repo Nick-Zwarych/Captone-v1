@@ -3,6 +3,10 @@ import React from "react";
 import '../src/styles/Home.css';
 import heroImage from '../src/Images/heroImage1.png';
 import QuickStartSection from "../src/homeComponents/QuickStartSection";
+import TrustSection from "./homeComponents/TrustSection";
+import BeYourOwnBossPart1 from "./homeComponents/BeYourOwnBossPart1"
+import BeYourOwnBossPart2 from "./homeComponents/BeYourOwnBossPart2"
+import BlogSection from "./homeComponents/BlogSection";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -30,6 +34,10 @@ const Home = () => {
         </div>
       </div>
       <QuickStartSection/>
+      <TrustSection/>
+      <BeYourOwnBossPart1/>
+      <BeYourOwnBossPart2/>
+      <BlogSection/>
     </div>
   );
 };

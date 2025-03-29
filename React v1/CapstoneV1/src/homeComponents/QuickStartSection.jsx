@@ -7,8 +7,11 @@ export default function QuickStartSection() {
   return (
     <section className="quickstart">
       <div className="quickstart-left">
-        <h2>Post your first<br />task in seconds</h2>
-        <p>Save yourself hours and get your to-do list completed</p>
+        <div className='quickstart-heading'>
+          <h2>Post your first<br />task in seconds</h2>
+        </div>
+        
+        <p className='quickstart-ptag'>Save yourself hours and get your to-do list completed</p>
 
         <ol className="quickstart-steps">
           <li><span>1</span> Describe what you need done</li>

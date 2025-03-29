@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4rem 2rem;
+    padding: 4rem 1.5rem;
     gap: 2rem;
     background-color: #e7f0ff;
     border-radius: 1rem;
@@ -11,23 +11,29 @@
     max-width: 1200px;
     flex-wrap: wrap;
   }
+
+  .quickstart-heading h2{
+    font-family: 'Inter', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #0D1A73;
+    margin-bottom: 3rem;
+    letter-spacing: -1px;
+  }
   
   .quickstart-left {
     flex: 1;
     min-width: 300px;
   }
   
-  .quickstart-left h2 {
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1.1;
-    color: #081952;
-  }
   
   .quickstart-left p {
-    font-size: 1.25rem;
-    margin: 1rem 0 2rem;
-    color: #1a1a40;
+    font-family: 'Inter', sans-serif;
+    margin: 1rem 0;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #051258;
   }
   
   .quickstart-steps {
@@ -37,12 +43,14 @@
   }
   
   .quickstart-steps li {
+    font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: #1a1a40;
+
+    color: #051258;
   }
   
   .quickstart-steps span {
@@ -79,4 +87,47 @@
   .quickstart-image {
     width: 100%;
     border-radius: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .quickstart {
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+  
+    .quickstart-left,
+    .quickstart-right {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .quickstart-left h2 {
+      font-size: 2rem;
+    }
+  
+    .quickstart-left p {
+      font-size: 1.1rem;
+    }
+  
+    .quickstart-steps {
+      padding-left: 0;
+      text-align: left;
+    }
+
+    .quickstart-steps li {
+      justify-content: flex-start;
+    }
+  
+    .quickstart-btn {
+      width: 100%;
+      max-width: 300px;
+    }
+  
+    .quickstart-image {
+      max-width: 100%;
+      height: auto;
+      margin-top: 2rem;
+    }
   }

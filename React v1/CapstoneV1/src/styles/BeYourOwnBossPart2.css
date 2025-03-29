@@ -1,0 +1,146 @@
+.boss-section2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2rem;
+    background-color: #fbffff;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin: 4rem auto;
+    width: 95%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+  }
+  
+  .boss-left2 {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .boss-img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    object-fit: cover;
+  }
+  
+  .boss-right2 {
+    flex: 1.2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .boss-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #0D1A73;
+    margin-bottom: 1rem;
+  }
+  
+  .boss-metrics {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .boss-metrics .rating, .boss-metrics .completion {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .star, .percent {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0046ff;
+  }
+  
+  .label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .subtext {
+    font-size: 0.8rem;
+    color: #888;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 1.5rem 0;
+  }
+  
+  .specialties {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: #0D1A73;
+    margin-bottom: 0.5rem;
+  }
+  
+  .bio {
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .badges {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+  
+  .badge {
+    font-family: 'Inter', sans-serif;
+    background-color: #e6ecff;
+    color: #0D1A73;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  
+  .review-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    color: #0D1A73;
+    margin-bottom: 0.5rem;
+  }
+  
+  .quote {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .review-author {
+    font-weight: 500;
+    color: #0D1A73;
+  }
+  
+  @media (max-width: 768px) {
+    .boss-section2 {
+      flex-direction: column;
+      padding: 1.5rem;
+    }
+  
+    .boss-metrics {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    .badges {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
