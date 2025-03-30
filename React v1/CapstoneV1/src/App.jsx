@@ -9,6 +9,7 @@ import About from "./About";
 import Contact from "./Contact";
 import CreateTask from "./CreateTask";
 import TaskList from "./TaskList";
+import BlogPosts from "./BlogPosts";
 
 function App() {
   // tasks state will hold all created tasks for now until we get our database integration started
@@ -35,6 +36,7 @@ function App() {
           <Route path="tasks" element={<TaskList tasks={tasks} />} />
           {/* Can redirect "/" or any other path to TaskList if desired */}
           {/* <Route path="/" element={<TaskList tasks={tasks} />} /> */}
+          <Route path="blog" element={<BlogPosts />} />
         </Route>
       </Routes>
     </BrowserRouter>
