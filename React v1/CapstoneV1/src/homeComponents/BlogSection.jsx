@@ -10,7 +10,7 @@ const BlogSection = () => {
     <section className="blog-section">
       <div className="blog-header">
         <h2>Articles, stories and more</h2>
-        <Link to="/about">
+        <Link to="/blog">
             <button className="blog-btn">Visit our blog</button>
         </Link>
       </div>
