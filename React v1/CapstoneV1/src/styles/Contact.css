@@ -1,0 +1,115 @@
+.contact-page {
+    background-color: #fef9ff;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+    color: #0a0a33;
+    text-align: center;
+  }
+  
+  .contact-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0a0a73;
+    margin-bottom: 2rem;
+  }
+  
+  .contact-search input {
+    padding: 1rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+  
+  .browse-categories h2 {
+    font-size: 2rem;
+    color: #0a0a73;
+    margin-bottom: 1.5rem;
+  }
+  
+  .categories-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  .category-card {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .category-card .icon {
+    font-size: 2rem;
+  }
+  
+  .category-card p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0a0a73;
+  }
+  
+  .contact-footer {
+    margin-top: 3rem;
+  }
+  
+  .contact-footer h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-footer p {
+    margin: 0.25rem 0;
+  }
+  
+  .social-icons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .social-icons a {
+    font-size: 1.25rem;
+    color: #0a0a73;
+    transition: color 0.2s;
+  }
+  
+  .social-icons a:hover {
+    color: #0046ff;
+  }
+  
+  @media (max-width: 768px) {
+    .categories-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .category-card {
+      width: 90%;
+    }
+  }
