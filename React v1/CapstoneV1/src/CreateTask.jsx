@@ -1,6 +1,7 @@
 // src/CreateTask.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../src/styles/CreateTask.css";
 
 function CreateTask({ addTask }) {
   const [step, setStep] = useState(1);
@@ -95,9 +96,10 @@ function CreateTask({ addTask }) {
   };
 
   return (
-    <div>
-      <h2>Create Task (Step {step} of 4)</h2>
+    <div className="create-task-container">
+      <h2 className="create-task-title">Create Task (Step {step} of 4)</h2>
       <form
+        className="create-task-from"
         onSubmit={
           // When on step 4, handle submit; otherwise, go to the next step.
           step === 4
@@ -109,11 +111,12 @@ function CreateTask({ addTask }) {
         }
       >
         {step === 1 && (
-          <div>
+          <div className="form-step">
             {/* Task Title */}
-            <div>
+            <div className="form-group">
               <label>
                 Task Title:
+              </label>
                 <input
                   type="text"
                   name="taskTitle"
@@ -121,13 +124,13 @@ function CreateTask({ addTask }) {
                   onChange={handleChange}
                   required
                 />
-              </label>
             </div>
 
             {/* Task Before Date */}
-            <div>
+            <div className="form-group">
               <label>
                 Task Before Date:
+              </label>
                 <input
                   type="date"
                   name="taskBeforeDate"
@@ -137,13 +140,13 @@ function CreateTask({ addTask }) {
                     taskData.taskAfterDate || taskData.taskIsDateFlexible
                   }
                 />
-              </label>
             </div>
 
             {/* Task After Date */}
-            <div>
+            <div className="form-group">
               <label>
                 Task After Date:
+              </label>
                 <input
                   type="date"
                   name="taskAfterDate"
@@ -153,11 +156,10 @@ function CreateTask({ addTask }) {
                     taskData.taskBeforeDate || taskData.taskIsDateFlexible
                   }
                 />
-              </label>
             </div>
 
             {/* Is Date Flexible? */}
-            <div>
+            <div className="form-group checkbox-group">
               <label>
                 Is Date Flexible?
                 <input
@@ -174,7 +176,7 @@ function CreateTask({ addTask }) {
             {(taskData.taskBeforeDate ||
               taskData.taskAfterDate ||
               taskData.taskIsDateFlexible) && (
-              <div>
+              <div className="form-group checkbox-group">
                 <label>
                   Time Required:
                   <input
@@ -189,9 +191,9 @@ function CreateTask({ addTask }) {
 
             {/* Show Time of Day only if Time Required is checked */}
             {taskData.taskTimeRequired && (
-              <div>
+              <div className="form-group">
                 <label>
-                  Time of Day:
+                  Time of Day:&nbsp;&nbsp;
                   <select
                     name="taskTimeOfDay"
                     value={taskData.taskTimeOfDay}
@@ -209,10 +211,10 @@ function CreateTask({ addTask }) {
         )}
 
         {step === 2 && (
-          <div>
-            <div>
+          <div className="form-step">
+            <div className="form-group">
               <label>
-                Location Type:
+                Location Type:&nbsp;&nbsp;
                 <select
                   name="taskLocationType"
                   value={taskData.taskLocationType}
@@ -223,9 +225,9 @@ function CreateTask({ addTask }) {
                 </select>
               </label>
             </div>
-            <div>
+            <div className="form-group ">
               <label>
-                Location - Postal Code:
+                Location - Postal Code:&nbsp;&nbsp;
                 <input
                   type="text"
                   name="taskLocation"
@@ -239,27 +241,27 @@ function CreateTask({ addTask }) {
         )}
 
         {step === 3 && (
-          <div>
-            <div>
+          <div className="form-step">
+            <div className="form-group">
               <label>
                 Task Details:
+              </label>
                 <textarea
                   name="taskDetails"
                   value={taskData.taskDetails}
                   onChange={handleChange}
                   required
                 />
-              </label>
             </div>
             {/* You can add taskImages upload later */}
           </div>
         )}
 
         {step === 4 && (
-          <div>
-            <div>
+          <div className="form-step">
+            <div className="form-group">
               <label>
-                Task Budget:
+                Task Budget:&nbsp;&nbsp;
                 <input
                   type="number"
                   step="0.01"
@@ -270,19 +272,19 @@ function CreateTask({ addTask }) {
                 />
               </label>
             </div>
-            <button type="submit">Create Task</button>
+            <button className="submit-btn" type="submit">Create Task</button>
           </div>
         )}
 
-        <div style={{ marginTop: "1em" }}>
+        <div className="step-controls">
           {step > 1 && (
-            <button type="button" onClick={prevStep}>
+            <button type="button" className="back-btn" onClick={prevStep}>
               Back
             </button>
           )}
           {step < 4 && (
             // The “Next” button will submit the form to trigger nextStep (if not on step 4)
-            <button type="submit" style={{ marginLeft: "1em" }}>
+            <button type="submit" className="next-btn" style={{ marginLeft: "1em" }}>
               Next
             </button>
           )}
