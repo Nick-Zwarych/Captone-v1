@@ -1,62 +1,63 @@
 // src/TaskList.jsx
 import React from "react";
+import "../src/styles/TaskList.css";
 
 function TaskList({ tasks }) {
   return (
-    <div>
-      <h2>Task List</h2>
+    <div className="task-list-container">
+      <h2 className="task-list-title">Browse Task List</h2>
       {tasks.length === 0 ? (
-        <p>No tasks available.</p>
+        <p className="no-tasks">No tasks available.</p>
       ) : (
-        <ul>
+        <ul className="task-list">
           {tasks.map((task, index) => (
-            <li key={index} style={{ marginBottom: "1em" }}>
+            <li key={index} className="task-card">
               {/* Task Title - Always Displayed */}
-              <h3>{task.taskTitle}</h3>
+              <h3 className="task-title">{task.taskTitle}</h3>
 
               {/* Conditionally render fields only if they have a value */}
               {task.taskOnDate && (
-                <p>
+                <p className="task-meta">
                   <strong>On Date:</strong> {task.taskOnDate}
                 </p>
               )}
               {task.taskBeforeDate && (
-                <p>
+                <p className="task-meta">
                   <strong>Before Date:</strong> {task.taskBeforeDate}
                 </p>
               )}
               {task.taskIsDateFlexible && (
-                <p>
+                <p className="task-meta">
                   <strong>Date Flexible:</strong> Yes
                 </p>
               )}
               {task.taskTimeRequired && (
-                <p>
+                <p className="task-meta">
                   <strong>Time Required:</strong> Yes
                 </p>
               )}
               {task.taskTimeOfDay && (
-                <p>
+                <p className="task-meta">
                   <strong>Time of Day:</strong> {task.taskTimeOfDay}
                 </p>
               )}
               {task.taskLocationType && (
-                <p>
+                <p className="task-meta">
                   <strong>Location Type:</strong> {task.taskLocationType}
                 </p>
               )}
               {task.taskLocation && (
-                <p>
+                <p className="task-meta"> 
                   <strong>Location:</strong> {task.taskLocation}
                 </p>
               )}
               {task.taskDetails && (
-                <p>
+                <p className="task-meta">
                   <strong>Details:</strong> {task.taskDetails}
                 </p>
               )}
               {task.taskBudget && (
-                <p>
+                <p className="task-meta">
                   <strong>Budget:</strong> {task.taskBudget}
                 </p>
               )}
