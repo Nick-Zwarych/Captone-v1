@@ -1,0 +1,58 @@
+.ratings-reviews-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: #fdf9f8;
+    border-radius: 1.5rem;
+    padding: 4rem 2rem;
+    margin: 4rem auto;
+    width: 95%;
+    max-width: 1200px;
+    gap: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .ratings-reviews-section .image-column {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .ratings-reviews-section .image-column img {
+    width: 100%;
+    border-radius: 1.25rem;
+  }
+  
+  .ratings-reviews-section .text-column {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .ratings-reviews-section .text-column h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    color: #0D1A73;
+    margin-bottom: 1.25rem;
+    font-weight: 800;
+  }
+  
+  .ratings-reviews-section .text-column p {
+    font-size: 1.25rem;
+    font-family: 'Inter', sans-serif;
+    color: #0D1A73;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .ratings-reviews-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    .ratings-reviews-section .text-column h2 {
+      font-size: 2rem;
+    }
+    .ratings-reviews-section .text-column p {
+      font-size: 1rem;
+    }
+  }
+  

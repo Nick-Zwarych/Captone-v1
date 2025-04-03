@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 2rem;
+    padding: 2rem 1.5rem;
     background-color: #fff;
     border-radius: 2rem;
     width: 95%;
@@ -22,8 +22,7 @@
   }
   
   .describe-task-left img {
-    width: 100%;
-    max-width: 400px;
+    max-width: 100%;
     border-radius: 1rem;
   }
   
@@ -34,20 +33,23 @@
   }
   
   .describe-task-right h2 {
-    font-size: 2.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 3rem;
     font-weight: 700;
     color: #0d1a73;
     margin-bottom: 1rem;
   }
   
   .describe-task-right p {
+    font-family: 'Inter', sans-serif;
     font-size: 1.25rem;
-    color: #333;
+    color: #0d1a73;
     line-height: 1.6;
     margin-bottom: 2rem;
   }
   
   .describe-button {
+    font-family: 'Inter', sans-serif;
     background-color: #f0f4ff;
     color: #0046ff;
     font-weight: 600;
