@@ -1,7 +1,7 @@
 // src/pages/About.jsx
 import React, { useState } from "react";
 import "../src/styles/About.css";
-import aboutImage from "../src/Images/AboutImage1.png"; // Replace with your actual image
+import aboutImage from "../src/Images/AboutImage1.png";
 
 const faqData = [
   { question: "What is Airtasker?", answer: "Airtasker is a trusted community platform that connects people who need to outsource tasks with people ready to work." },

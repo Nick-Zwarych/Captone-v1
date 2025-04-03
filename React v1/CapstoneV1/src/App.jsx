@@ -10,6 +10,7 @@ import Contact from "./Contact";
 import CreateTask from "./CreateTask";
 import TaskList from "./TaskList";
 import BlogPosts from "./BlogPosts";
+import AirtaskerGuidelines from "./AirtaskerGuidelines";
 
 function App() {
   // tasks state will hold all created tasks for now until we get our database integration started
@@ -37,6 +38,7 @@ function App() {
           {/* Can redirect "/" or any other path to TaskList if desired */}
           {/* <Route path="/" element={<TaskList tasks={tasks} />} /> */}
           <Route path="blog" element={<BlogPosts />} />
+          <Route path="guidelines" element={<AirtaskerGuidelines />} />
         </Route>
       </Routes>
     </BrowserRouter>

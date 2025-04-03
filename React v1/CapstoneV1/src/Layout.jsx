@@ -29,6 +29,7 @@ export default function Layout() {
                 <li><NavLink to="/create" className={({ isActive }) => isActive ? "active" : ""}>Create Task</NavLink></li>
                 <li><NavLink to="/tasks" className={({ isActive }) => isActive ? "active" : ""}>Task List</NavLink></li>
                 <li><NavLink to="/blog" className={({ isActive }) => isActive ? "active" : ""}>Blog Posts</NavLink></li>
+                <li><NavLink to="/guidelines" className={({ isActive }) => isActive ? "active" : ""}>Guidelines</NavLink></li>
               </ul>
             </div>
         </nav>
@@ -48,6 +49,7 @@ export default function Layout() {
           <Link to="/create">Create</Link>
           <Link to="/tasks">Task List</Link>
           <Link to="/blog">Blog Posts</Link>
+          <Link to="/guidelines">Guidelines</Link>
         </div>
         <p>&copy; {new Date().getFullYear()} Task Company. All rights reserved.</p>
       </footer>

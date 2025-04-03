@@ -23,7 +23,7 @@ const Contact = () => {
             </div>
           </Link>
 
-          <Link to="/about" className="category-card">
+          <Link to="/guidelines" className="category-card">
             <div className="card-content">
               <span className="icon">📘</span>
               <p>Airtasker Guidelines</p>
