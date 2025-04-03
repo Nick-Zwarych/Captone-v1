@@ -244,7 +244,7 @@ function CreateTask({ addTask }) {
           <div className="form-step">
             <div className="form-group">
               <label>
-                Task Details:
+                Task Details (Include Email):
               </label>
                 <textarea
                   name="taskDetails"
