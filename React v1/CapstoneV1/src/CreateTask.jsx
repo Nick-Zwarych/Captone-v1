@@ -20,6 +20,7 @@ function CreateTask({ addTask }) {
     taskDetails: "",
     // Page Four
     taskBudget: "",
+    taskEmail: "", // ✅ Added email field
   });
 
   const navigate = useNavigate();
@@ -60,6 +61,12 @@ function CreateTask({ addTask }) {
     });
   };
 
+  // Email format validation function
+  const validateEmailFormat = (email) => {
+    const regex = /^[A-Za-z]{3,}[A-Za-z0-9._%+-]*@[A-Za-z0-9.-]+\.(com|ca)$/;
+    return regex.test(email);
+  };
+
   // Validation function for Step 1
   const validateStep1 = () => {
     // Ensure that exactly one of Task Before Date, Task After Date, or Is Date Flexible is selected
@@ -91,6 +98,15 @@ function CreateTask({ addTask }) {
   // On final submit, add the task and navigate to the task list page
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Check email format before submitting
+    if (!validateEmailFormat(taskData.taskEmail)) {
+      alert(
+        "Please enter a valid email address ending in .com or .ca with at least 3 starting letters."
+      );
+      return;
+    }
+
     addTask(taskData);
     navigate("/tasks");
   };
@@ -114,48 +130,40 @@ function CreateTask({ addTask }) {
           <div className="form-step">
             {/* Task Title */}
             <div className="form-group">
-              <label>
-                Task Title:
-              </label>
-                <input
-                  type="text"
-                  name="taskTitle"
-                  value={taskData.taskTitle}
-                  onChange={handleChange}
-                  required
-                />
+              <label>Task Title:</label>
+              <input
+                type="text"
+                name="taskTitle"
+                value={taskData.taskTitle}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             {/* Task Before Date */}
             <div className="form-group">
-              <label>
-                Task Before Date:
-              </label>
-                <input
-                  type="date"
-                  name="taskBeforeDate"
-                  value={taskData.taskBeforeDate}
-                  onChange={handleChange}
-                  disabled={
-                    taskData.taskAfterDate || taskData.taskIsDateFlexible
-                  }
-                />
+              <label>Task Before Date:</label>
+              <input
+                type="date"
+                name="taskBeforeDate"
+                value={taskData.taskBeforeDate}
+                onChange={handleChange}
+                disabled={taskData.taskAfterDate || taskData.taskIsDateFlexible}
+              />
             </div>
 
             {/* Task After Date */}
             <div className="form-group">
-              <label>
-                Task After Date:
-              </label>
-                <input
-                  type="date"
-                  name="taskAfterDate"
-                  value={taskData.taskAfterDate}
-                  onChange={handleChange}
-                  disabled={
-                    taskData.taskBeforeDate || taskData.taskIsDateFlexible
-                  }
-                />
+              <label>Task After Date:</label>
+              <input
+                type="date"
+                name="taskAfterDate"
+                value={taskData.taskAfterDate}
+                onChange={handleChange}
+                disabled={
+                  taskData.taskBeforeDate || taskData.taskIsDateFlexible
+                }
+              />
             </div>
 
             {/* Is Date Flexible? */}
@@ -243,15 +251,13 @@ function CreateTask({ addTask }) {
         {step === 3 && (
           <div className="form-step">
             <div className="form-group">
-              <label>
-                Task Details (Include Email):
-              </label>
-                <textarea
-                  name="taskDetails"
-                  value={taskData.taskDetails}
-                  onChange={handleChange}
-                  required
-                />
+              <label>Task Details (Include Email):</label>
+              <textarea
+                name="taskDetails"
+                value={taskData.taskDetails}
+                onChange={handleChange}
+                required
+              />
             </div>
             {/* You can add taskImages upload later */}
           </div>
@@ -272,7 +278,24 @@ function CreateTask({ addTask }) {
                 />
               </label>
             </div>
-            <button className="submit-btn" type="submit">Create Task</button>
+
+            {/* Email Field */}
+            <div className="form-group">
+              <label>
+                Email:&nbsp;&nbsp;
+                <input
+                  type="email"
+                  name="taskEmail"
+                  value={taskData.taskEmail}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+            </div>
+
+            <button className="submit-btn" type="submit">
+              Create Task
+            </button>
           </div>
         )}
 
@@ -284,7 +307,11 @@ function CreateTask({ addTask }) {
           )}
           {step < 4 && (
             // The “Next” button will submit the form to trigger nextStep (if not on step 4)
-            <button type="submit" className="next-btn" style={{ marginLeft: "1em" }}>
+            <button
+              type="submit"
+              className="next-btn"
+              style={{ marginLeft: "1em" }}
+            >
               Next
             </button>
           )}

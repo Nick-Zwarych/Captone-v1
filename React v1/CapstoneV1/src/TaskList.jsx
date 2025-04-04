@@ -47,7 +47,7 @@ function TaskList({ tasks }) {
                 </p>
               )}
               {task.taskLocation && (
-                <p className="task-meta"> 
+                <p className="task-meta">
                   <strong>Location:</strong> {task.taskLocation}
                 </p>
               )}
@@ -59,6 +59,11 @@ function TaskList({ tasks }) {
               {task.taskBudget && (
                 <p className="task-meta">
                   <strong>Budget:</strong> {task.taskBudget}
+                </p>
+              )}
+              {task.taskEmail && (
+                <p className="task-meta">
+                  <strong>Contact Email:</strong> {task.taskEmail}
                 </p>
               )}
             </li>
