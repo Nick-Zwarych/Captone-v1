@@ -251,7 +251,7 @@ function CreateTask({ addTask }) {
         {step === 3 && (
           <div className="form-step">
             <div className="form-group">
-              <label>Task Details (Include Email):</label>
+              <label>Task Details:</label>
               <textarea
                 name="taskDetails"
                 value={taskData.taskDetails}
